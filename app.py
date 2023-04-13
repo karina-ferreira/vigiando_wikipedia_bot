@@ -11,6 +11,8 @@ from flask import Flask, request
 from io import StringIO 
 from oauth2client.service_account import ServiceAccountCredentials
 
+import WikiFuncao
+
 # ______________________________[variáveis de ambiente]_________________________
 
 TELEGRAM_API_KEY = os.environ["TELEGRAM_API_KEY"]
