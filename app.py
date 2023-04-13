@@ -55,7 +55,7 @@ def telegram_bot():
 
 # Define resposta
 
-if message == "/start":
+    if message == "/start":
         texto_resposta = "Olá! Seja bem-vinda(o). Esse bot te dá algumas análises sobre a página da Wikipédia que você escolher. Na próxima mensagem, envie o título da página (verbete) que deseja acompanhar:"
     else:
         texto_resposta = WikiFuncao(message)
