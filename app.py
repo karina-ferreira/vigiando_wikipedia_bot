@@ -24,9 +24,9 @@ with open("credenciais.json", mode="w") as arquivo:
 conta = ServiceAccountCredentials.from_json_keyfile_name("credenciais.json")
 api = gspread.authorize(conta)
 planilha = api.open_by_key(f'{GOOGLE_SHEETS_KEY}')
-sheet_recebidas = planilha.worksheet("comentarios") 
-sheet_mailing = planilha.worksheet("mailing") 
-
+sheet_recebidas = planilha.worksheet("enviadas") 
+sheet_mailing = planilha.worksheet("recebidas")
+  
 # ______________________________[site]__________________________________________
 
 app = Flask(__name__)
@@ -53,7 +53,34 @@ def telegram_bot():
     date = datetime.fromtimestamp(update['message']['date']).date()
     time = datetime.fromtimestamp(update['message']['date']).time()
 
+# Define resposta
 
+if message == "/start":
+        texto_resposta = "Olá! Seja bem-vinda(o). Esse bot te dá algumas análises sobre a página da Wikipédia que você escolher. Na próxima mensagem, envie o título da página (verbete) que deseja acompanhar:"
+    else:
+        texto_resposta = WikiFuncao(message)
+    nova_mensagem = {"chat_id": chat_id, "text": texto_resposta}
+    requests.post(f"https://api.telegram.org./bot{token}/sendMessage", data=nova_mensagem)
+    mensagens.append([datahora, "enviada", username, first_name, chat_id, texto_resposta])
+        
+
+# Atualiza planilha do sheets com último update processado
+
+    recebidas = []
+    for mensagem in mensagens:
+        if mensagem[1] == "recebida":
+            recebidas.append(mensagem)
+
+    planilha_recebidas = planilha.worksheet("Mensagens Recebidas")
+    planilha_recebidas.append_rows(recebidas)
+
+    enviadas = []
+    for mensagem in mensagens:
+        if mensagem[1] == "enviada":
+            enviadas.append(mensagem)
+
+    planilha_recebidas = planilha.worksheet("Mensagens Enviadas")
+    planilha_recebidas.append_rows(enviadas)
     
     
 # Envia a resposta 
