@@ -63,13 +63,13 @@ def telegram_bot():
         date = datetime.fromtimestamp(update['message']['date']).date()
         time = datetime.fromtimestamp(update['message']['date']).time()
 
-        #resposta_wiki = wikifuncao.wikifuncao(message)
+        resposta_wiki = wikifuncao.wikifuncao(message)
         
         # Define resposta
         if message == "/start":
             texto_resposta = "Olá! Seja bem-vinda(o). Esse bot te dá algumas análises sobre a página da Wikipédia que você escolher. Na próxima mensagem, envie o título da página (verbete) que deseja acompanhar:"
         else:
-            texto_resposta = "entrou na segunda condição" #resposta_wiki
+            texto_resposta = resposta_wiki #"entrou na segunda condição"
             
         # Envia a resposta        
         nova_mensagem = {"chat_id": chat_id, "text": texto_resposta} 
