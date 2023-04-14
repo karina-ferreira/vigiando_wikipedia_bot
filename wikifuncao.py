@@ -9,7 +9,7 @@ def wikifuncao(verbete):
 
   BASE_URL = "http://pt.wikipedia.org/w/api.php"
 
-  title = verbete.capitalize()
+  title = verbete #.capitalize()
 
   parameters = { 'action': 'query',
             'format': 'json',
