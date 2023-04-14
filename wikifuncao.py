@@ -117,18 +117,18 @@ def wikifuncao(verbete):
 
 #________________________________[resultados]__________________________________#
 
-  resposta = f'\U0001F5D3	Nos últimos 30 dias, o verbete <b>{title}</b>:'
+  resposta = f'\U0001F5D3	Nos últimos 30 dias, o verbete <b>{title}</b>:\n \n'
 
   if df_30_dias.shape[0] == 0:
-      resposta = resposta +  f'\nNão sofreu alterações.'
+      resposta = resposta +  f'\U000274C \nNão sofreu alterações.'
   else:
-      resposta = resposta + f'\nFoi editado {vezes_editado} vezes.'
+      resposta = resposta + f'\U0001F4DD \nFoi editado {vezes_editado} vezes.'
 
   if num > 1:
-      resposta = resposta +  f'\nFoi editado por {num} usuários.'
+      resposta = resposta +  f'\U0001F465	\nFoi editado por {num} usuários.'
 
   elif num == 1:
-      resposta = resposta + f'\nFoi editado por {num} usuário(s).'
+      resposta = resposta + f'\U0001F464 \nFoi editado por {num} usuário.'
   else:
       resposta = resposta + f' '
 
@@ -141,11 +141,11 @@ def wikifuncao(verbete):
       resposta = resposta + f'\nQuem mais editou este verbete foi {usuario}, com {n_edicoes} edições.'
 
   if R > 0:
-      resposta = resposta + f'\nO tamanho da edição aumentou {R}%, em comparação aos 30 dias anteriores.'
+      resposta = resposta + f'\U0002795	\nO tamanho da edição aumentou <b>{R}%</b>, em comparação aos 30 dias anteriores.'
   elif R <0:
-      resposta = resposta + f'\nO tamanho da edição diminuiu {R}%, em comparação aos 30 dias anteriores.'
+      resposta = resposta + f'\U0002796	\nO tamanho da edição diminuiu <b>{R}%</b>, em comparação aos 30 dias anteriores.'
   else:
-      resposta = resposta + f'\nNo período de 30 dias anterior a este, o verbete {title} não foi editado.'
+      resposta = resposta + f'\U0001F4C4 \nNo período de 30 dias anterior a este, o verbete {title} <b>não foi editado</b>.'
 
-  resposta = resposta + f' \nDesde sua criação, em {data_primeira}, o verbete {title} foi editado {total_revisions} vezes.'
+  resposta = resposta + f' \nDesde sua criação, em {data_primeira}, o verbete {title} <b>foi editado {total_revisions} vezes</b>.'
   return resposta
