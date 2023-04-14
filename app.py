@@ -31,6 +31,15 @@ planilha_recebidas = planilha.worksheet("mensagens_recebidas")
   
 # ______________________________[site]__________________________________________
 
+app = Flask(__name__)
+
+@app.route("/")
+def index():
+  return "Esse é o site de teste"
+
+# ______________________________ bot (FUNCIONANDO) _____________________________
+
+ 
 # Variável global para armazenar o update_id da última mensagem processada
 last_update_id = 0
 
