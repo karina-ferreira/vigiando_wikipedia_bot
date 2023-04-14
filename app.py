@@ -6,8 +6,6 @@ import pandas
 import requests
 import time
 
-
-
 from datetime import date, time
 from datetime import datetime
 from flask import Flask, request
