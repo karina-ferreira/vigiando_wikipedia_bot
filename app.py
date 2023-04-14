@@ -55,19 +55,19 @@ def telegram_bot():
     date = datetime.fromtimestamp(update['message']['date']).date()
     time = datetime.fromtimestamp(update['message']['date']).time()
 
-    resposta_wiki = wikifuncao.wikifuncao(message)
+    #resposta_wiki = wikifuncao.wikifuncao(message)
     
 # Define resposta
     texto_resposta = ""
     if message == "/start":
         texto_resposta = "Olá! Seja bem-vinda(o). Esse bot te dá algumas análises sobre a página da Wikipédia que você escolher. Na próxima mensagem, envie o título da página (verbete) que deseja acompanhar:"
     else:
-        texto_resposta = resposta_wiki
+        texto_resposta = "entrou na segunda" #resposta_wiki
     nova_mensagem = {"chat_id": chat_id, "text": texto_resposta}
     requests.post(f"https://api.telegram.org./bot{TELEGRAM_API_KEY}/sendMessage", data=nova_mensagem)
 
 # Atualiza planilha do sheets com último update processado
    
-    gravar_sheets.gravar_sheets(nova_mensagem)
+    #gravar_sheets.gravar_sheets(nova_mensagem)
 
     return "ok"
