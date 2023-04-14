@@ -7,21 +7,23 @@ from io import StringIO
 
 def wikifuncao(verbete):
 
-  BASE_URL = "http://pt.wikipedia.org/w/api.php" 
+  BASE_URL = "http://pt.wikipedia.org/w/api.php"
+
+  title = verbete.replace('_',' ')
 
   parameters = { 'action': 'query',
             'format': 'json',
             'continue': '',
-            'titles': verbete,
+            'titles': title,
             'prop': 'revisions',
             'rvprop': 'content|size|ids|timestamp|sha1|comment|flags|user|userid',
             'rvlimit': 'max',  
             'rvdir': 'older'}
 
-  wp_call = requests.get(BASE_URL, params=parameters)
-  response = wp_call.json()
+#   wp_call = requests.get(BASE_URL, params=parameters)
+#   response = wp_call.json()
 
-  title = parameters['titles'].replace('_',' ')
+#   title = parameters['titles'].replace('_',' ')
 
   total_revisions = 0
   revisoes = []
@@ -113,8 +115,8 @@ def wikifuncao(verbete):
   if df_usuarios.shape[0]==0:
       print(f'Esse verbete não foi editado nos últimos 30 dias.')
   else:
-      usuario = df_usuarios.loc[0]['index']
-      n_edicoes = df_usuarios.loc[0]['#edicoes']
+      usuario = df_usuarios.loc[0]['#edicoes']
+      n_edicoes = df_usuarios.loc[0]['count']
       print(f'Quem mais editou este verbete foi {usuario}, com {n_edicoes} edições.') 
 
 
@@ -139,8 +141,8 @@ def wikifuncao(verbete):
       resposta = resposta + f' '
       
   else:
-      usuario = df_usuarios.loc[0]['index']
-      n_edicoes = df_usuarios.loc[0]['#edicoes']
+      usuario = df_usuarios.loc[0]['#edicoes']
+      n_edicoes = df_usuarios.loc[0]['count']
       resposta = resposta + f'\nQuem mais editou este verbete foi {usuario}, com {n_edicoes} edições.'
 
   if R > 0:
