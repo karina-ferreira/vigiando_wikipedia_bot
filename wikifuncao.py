@@ -122,7 +122,7 @@ def wikifuncao(verbete):
   if df_30_dias.shape[0] == 0:
       resposta = resposta +  f'\U000274C \nNão sofreu alterações.'
   else:
-      resposta = resposta + f'\U0001F4DD \nFoi editado {vezes_editado} vezes.'
+      resposta = resposta + f'\U000274E	 \nFoi editado {vezes_editado} vezes.'
 
   if num > 1:
       resposta = resposta +  f'\U0001F465	\nFoi editado por {num} usuários.'
