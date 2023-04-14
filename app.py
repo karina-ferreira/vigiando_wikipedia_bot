@@ -31,29 +31,36 @@ planilha_recebidas = planilha.worksheet("mensagens_recebidas")
   
 # ______________________________[site]__________________________________________
 
-app = Flask(__name__)
-
-@app.route("/")
-def index():
-  return "Esse é o site do Vigiando Wikipédia Bot"
-#_______________________________[teste bot]__________________________________
- last_message = ""
+@app.route("/telegram-bot", methods = ["POST"])
+def telegram_bot():
   
- if message == "/start":
+    update = request.json 
+
+# Dados da mensagem
+    update_id = update['update_id']
+    first_name = update['message']['from']['first_name']
+    last_name = update['message']['from']['last_name']
+    user_name = update['message']['from']['username']
+    sender_id = update['message']['from']['id']
+    chat_id = update['message']['chat']['id']
+    message = update["message"]["text"]
+    date = datetime.fromtimestamp(update['message']['date']).date()
+    time = datetime.fromtimestamp(update['message']['date']).time()
+
+    #resposta_wiki = wikifuncao.wikifuncao(message)
+    
+# Define resposta
+    if message == "/start":
         texto_resposta = "Olá! Seja bem-vinda(o). Esse bot te dá algumas análises sobre a página da Wikipédia que você escolher. Na próxima mensagem, envie o título da página (verbete) que deseja acompanhar:"
     else:
-        if message == last_message: # verifica se a mensagem atual é igual à última mensagem
-            texto_resposta = "Você já me disse isso!" # define texto_resposta como uma string informando que a mensagem já foi enviada antes
-        else:
-            texto_resposta = "entrou na segunda" #resposta_wiki
-            last_message = message # atualiza last_message com a última mensagem enviada
-
+        texto_resposta = "entrou na segunda condição" #resposta_wiki
+        
+# Envia a resposta        
     nova_mensagem = {"chat_id": chat_id, "text": texto_resposta} 
     requests.post(f"https://api.telegram.org./bot{TELEGRAM_API_KEY}/sendMessage", data=nova_mensagem)
 
-    gravar_sheets.gravar_sheets(nova_mensagem)
+# Atualiza planilha do sheets com último update processado
+   
+    #gravar_sheets.gravar_sheets(nova_mensagem)
 
     return "ok"
-
-# ______________________________[bot do telegram]_____________________________
-
