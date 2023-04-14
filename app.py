@@ -1,6 +1,5 @@
 import os
 
-import date
 import gspread
 import json
 import pandas
