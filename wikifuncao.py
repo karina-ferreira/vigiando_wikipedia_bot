@@ -113,7 +113,7 @@ def wikifuncao(verbete):
   if df_usuarios.shape[0]==0:
       print(f'Esse verbete não foi editado nos últimos 30 dias.')
   else:
-      usuario =  df_usuarios.loc[0]['usuario']
+      usuario = df_usuarios.loc[0]['index']
       n_edicoes = df_usuarios.loc[0]['#edicoes']
       print(f'Quem mais editou este verbete foi {usuario}, com {n_edicoes} edições.') 
 
@@ -139,7 +139,7 @@ def wikifuncao(verbete):
       resposta = resposta + f' '
       
   else:
-      usuario =  df_usuarios.loc[0]['usuario']
+      usuario = df_usuarios.loc[0]['index']
       n_edicoes = df_usuarios.loc[0]['#edicoes']
       resposta = resposta + f'\nQuem mais editou este verbete foi {usuario}, com {n_edicoes} edições.'
 
