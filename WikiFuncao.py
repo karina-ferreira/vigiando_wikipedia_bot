@@ -1,7 +1,9 @@
-import requests
-import pandas
 import datetime
+import pandas as pd
+import requests
+import json
 
+from io import StringIO 
 
 def WikiFuncao(verbete):
 
@@ -13,8 +15,7 @@ def WikiFuncao(verbete):
             'titles': verbete,
             'prop': 'revisions',
             'rvprop': 'content|size|ids|timestamp|sha1|comment|flags|user|userid',
-            'rvlimit': 'max', 
-            'format': 'json', 
+            'rvlimit': 'max',  
             'rvdir': 'older'}
 
   wp_call = requests.get(BASE_URL, params=parameters)
@@ -68,7 +69,6 @@ def WikiFuncao(verbete):
   df_30_60_dias = df_revisoes[(df_revisoes.timestamp.dt.date > pd.to_datetime(datetime.datetime.now() - pd.to_timedelta("60day"))) & (df_revisoes.timestamp.dt.date < pd.to_datetime(datetime.datetime.now() - pd.to_timedelta("30day")))] 
 
 #________________________________[análises]__________________________________#
-
 
   vezes_editado = df_30_dias.shape[0]
 
