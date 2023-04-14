@@ -13,7 +13,7 @@ from io import StringIO
 from oauth2client.service_account import ServiceAccountCredentials
 
 import gravar_sheets
-import WikiFuncao
+import wikifuncao
 
 # ______________________________[variáveis de ambiente]_________________________
 
