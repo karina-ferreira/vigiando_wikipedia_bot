@@ -117,12 +117,12 @@ def wikifuncao(verbete):
 
 #________________________________[resultados]__________________________________#
 
-  resposta = f'\U0001F5D3	Nos últimos 30 dias, o verbete <b>{title}</b>:\n \n'
+  resposta = f'📝 Nos últimos 30 dias, o verbete <b>{title}</b>:\n \n'
 
   if df_30_dias.shape[0] == 0:
-      resposta = resposta +  f'✅ \nNão sofreu alterações.'
+      resposta = resposta +  f'\nNão sofreu alterações.'
   else:
-      resposta = resposta + f'📝 \nFoi editado <b>{vezes_editado} vezes</b>.'
+      resposta = resposta + f'\nFoi editado <b>{vezes_editado} vezes</b>.'
 
   if num > 1:
       resposta = resposta +  f'\nFoi editado por <b>{num} usuários</b>.'
