@@ -69,6 +69,6 @@ def telegram_bot():
 
 # Atualiza planilha do sheets com último update processado
    
-    #gravar_sheets.gravar_sheets(nova_mensagem)
+    gravar_sheets.gravar_sheets(nova_mensagem)
 
     return "ok"
