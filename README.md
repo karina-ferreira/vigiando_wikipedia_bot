@@ -16,4 +16,4 @@ O robô será integrado com o Google Sheets, onde armazenará a pesquisa do usu�
 ### 📧	· contato:
 Dúvidas, sugestões ou outras questões, mande um oi para karinaasferreira@gmail.com.
 
-🤖: <b>"Vigiar as narrativas e preservar a memória." - <i> Bot da Vigiando a Wikipédia</i></b>
+🤖: <b>"Vigiar as narrativas e preservar a memória." – <i> Bot da Vigiando a Wikipédia</i></b>
