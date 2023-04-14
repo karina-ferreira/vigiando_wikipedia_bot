@@ -32,4 +32,4 @@ def gravar_sheets():
             enviadas.append(mensagem)
             planilha_enviadas.append_rows(enviadas)
     
-    return
+    return 
