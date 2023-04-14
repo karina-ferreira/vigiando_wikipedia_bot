@@ -1,6 +1,6 @@
 # Vigiando a Wikipédia Bot 🔎
 
-Esse repositório contém o código do trabalho da disciplina de Projeto Final da certificação da primeira parte que compõe o Master em Jornalismo de Dados, Automação e Data Storytelling do Insper (2022-23). O robô serve para fazer algumas análises sobre verbetes escolhidos da Wikipédia, solicitadas por meio do envio de uma mensagem ao bot do Telegram [Vigiando a Wikipédia 🔎](https://t.me/vigiandowiki_bot). A ferramenta pode ser utilizada para acompanhar disputas de narrativas e possíveis interesses em verbetes de pessoas públicas, políticos, fatos históricos, entre outros.
+Esse repositório contém o código do trabalho da disciplina de Projeto Final da certificação da primeira parte que compõe o Master em Jornalismo de Dados, Automação e Data Storytelling do Insper (2022-23). O robô serve para fazer algumas análises sobre verbetes escolhidos da Wikipédia, solicitadas por meio do envio de uma mensagem ao bot do Telegram <b>[Vigiando a Wikipédia 🔎](https://t.me/vigiandowiki_bot)</b>. A ferramenta pode ser utilizada para acompanhar disputas de narrativas e possíveis interesses em verbetes de pessoas públicas, políticos, fatos históricos, entre outros.
 
 ### 📊 · a análise:
 * O robô faz uma solicitação para a API da Wikipédia, usando como parâmetro a página de revisões de um verbete que o usuário indicar.
@@ -15,3 +15,5 @@ O robô será integrado com o Google Sheets, onde armazenará a pesquisa do usu�
 
 ### 📧	· contato:
 Dúvidas, sugestões ou outras questões, mande um oi para karinaasferreira@gmail.com.
+
+🤖: <b>"Vigiar as narrativas e preservar a memória." - <i> Bot da Vigiando a Wikipédia</i></b>
