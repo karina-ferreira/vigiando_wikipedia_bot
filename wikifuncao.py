@@ -117,7 +117,7 @@ def wikifuncao(verbete):
 
 #________________________________[resultados]__________________________________#
 
-  resposta = f'Nos últimos 30 dias, o verbete {title}:'
+  resposta = f'\U0001F5D3	Nos últimos 30 dias, o verbete <b>{title}</b>:'
 
   if df_30_dias.shape[0] == 0:
       resposta = resposta +  f'\nNão sofreu alterações.'
