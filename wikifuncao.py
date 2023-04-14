@@ -117,18 +117,18 @@ def wikifuncao(verbete):
 
 #________________________________[resultados]__________________________________#
 
-  resposta = f'\U0001F5D3	Nos últimos 30 dias, o verbete <b>{title}</b>:\n \n'
+  resposta = f'\\U0001F5D3	Nos últimos 30 dias, o verbete <b>{title}</b>:\n \n'
 
   if df_30_dias.shape[0] == 0:
-      resposta = resposta +  f'\U0000274C \nNão sofreu alterações.'
+      resposta = resposta +  f'\\U0000274C \nNão sofreu alterações.'
   else:
-      resposta = resposta + f'\U000274E	 \nFoi editado <b>{vezes_editado} vezes</b>.'
+      resposta = resposta + f'\\U000274E	 \nFoi editado <b>{vezes_editado} vezes</b>.'
 
   if num > 1:
-      resposta = resposta +  f'\U0001F465	\nFoi editado por <b>{num} usuários.'
+      resposta = resposta +  f'\\U0001F465	\nFoi editado por <b>{num} usuários</b>.'
 
   elif num == 1:
-      resposta = resposta + f'\U0001F464 \nFoi editado por <b>{num} usuário</b>.'
+      resposta = resposta + f'\\U0001F464 \nFoi editado por <b>{num} usuário</b>.'
   else:
       resposta = resposta + f' '
 
@@ -138,14 +138,14 @@ def wikifuncao(verbete):
   else:
       usuario = df_usuarios.loc[0]['#edicoes']
       n_edicoes = df_usuarios.loc[0]['count']
-      resposta = resposta + f'\nQuem mais editou este verbete foi <b>{usuario}, com <b>{n_edicoes} edições</b>.'
+      resposta = resposta + f'\nQuem mais editou este verbete foi <b>{usuario}</b>, com <b>{n_edicoes} edições</b>.'
 
   if R > 0:
-      resposta = resposta + f'\U0002795	\nO tamanho da edição aumentou <b>{R}%</b>, em comparação aos 30 dias anteriores.'
+      resposta = resposta + f'\\U0002795	\nO tamanho da edição aumentou <b>{R}%</b>, em comparação aos 30 dias anteriores.'
   elif R <0:
-      resposta = resposta + f'\U0002796	\nO tamanho da edição diminuiu <b>{R}%</b>, em comparação aos 30 dias anteriores.'
+      resposta = resposta + f'\\U0002796	\nO tamanho da edição diminuiu <b>{abs(R)}%</b>, em comparação aos 30 dias anteriores.'
   else:
-      resposta = resposta + f'\U0001F4C4 \nNo período de 30 dias anterior a este, o verbete {title} <b>não foi editado</b>.'
+      resposta = resposta + f'\\U0001F4C4 \nNo período de 30 dias anterior a este, o verbete {title} <b>não foi editado</b>.'
 
-  resposta = resposta + f' \nDesde sua criação, em {data_primeira}, o verbete {title} <b>foi editado {total_revisions} vezes</b>.'
+  resposta = resposta + f'\nDesde sua criação, em {data_primeira}, o verbete {title} <b>foi editado {total_revisions} vezes</b>.'
   return resposta
