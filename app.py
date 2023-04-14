@@ -12,6 +12,7 @@ from flask import Flask, request
 from io import StringIO 
 from oauth2client.service_account import ServiceAccountCredentials
 
+import gravar_sheets
 import WikiFuncao
 
 # ______________________________[variáveis de ambiente]_________________________
@@ -67,17 +68,7 @@ def telegram_bot():
 
 # Atualiza planilha do sheets com último update processado
    
-    recebidas = []
-    for mensagem in mensagens:
-        if mensagem[1] == "recebida":
-            recebidas.append(mensagem)
-            planilha_recebidas.append_rows(recebidas)
-
-    enviadas = []
-    for mensagem in mensagens:
-        if mensagem[1] == "enviada":
-            enviadas.append(mensagem)
-            planilha_enviadas.append_rows(enviadas)
+    gravar_sheets(mensagens)
     
 # Envia a resposta 
 
