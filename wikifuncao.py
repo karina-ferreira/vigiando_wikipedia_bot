@@ -5,7 +5,7 @@ import json
 
 from io import StringIO 
 
-def WikiFuncao(verbete):
+def wikifuncao(verbete):
 
   BASE_URL = "http://pt.wikipedia.org/w/api.php" 
 
