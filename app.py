@@ -25,8 +25,8 @@ with open("credenciais.json", mode="w") as arquivo:
 conta = ServiceAccountCredentials.from_json_keyfile_name("credenciais.json")
 api = gspread.authorize(conta)
 planilha = api.open_by_key(f'{GOOGLE_SHEETS_KEY}')
-sheet_recebidas = planilha.worksheet("enviadas") 
-sheet_mailing = planilha.worksheet("recebidas")
+planilha_enviadas = planilha.worksheet("mensagens_enviadas") 
+planilha_recebidas = planilha.worksheet("mensagens_recebidas")
   
 # ______________________________[site]__________________________________________
 
@@ -66,23 +66,18 @@ def telegram_bot():
         
 
 # Atualiza planilha do sheets com último update processado
-
+   
     recebidas = []
     for mensagem in mensagens:
         if mensagem[1] == "recebida":
             recebidas.append(mensagem)
-
-    planilha_recebidas = planilha.worksheet("Mensagens Recebidas")
-    planilha_recebidas.append_rows(recebidas)
+            planilha_recebidas.append_rows(recebidas)
 
     enviadas = []
     for mensagem in mensagens:
         if mensagem[1] == "enviada":
             enviadas.append(mensagem)
-
-    planilha_recebidas = planilha.worksheet("Mensagens Enviadas")
-    planilha_recebidas.append_rows(enviadas)
-    
+            planilha_enviadas.append_rows(enviadas)
     
 # Envia a resposta 
 
