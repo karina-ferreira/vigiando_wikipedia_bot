@@ -65,8 +65,8 @@ def wikifuncao(verbete):
   df_revisoes['tamanho_anterior'] = df_revisoes['tamanho'].shift(-1)
   df_revisoes['tamanho_edicao'] = df_revisoes['tamanho'] - df_revisoes['tamanho_anterior']
 
-  df_30_dias = df_revisoes[df_revisoes.timestamp.dt.date > pd.to_datetime(datetime.datetime.now() - pd.to_timedelta("30day"))]
-  df_30_60_dias = df_revisoes[(df_revisoes.timestamp.dt.date > pd.to_datetime(datetime.datetime.now() - pd.to_timedelta("60day"))) & (df_revisoes.timestamp.dt.date < pd.to_datetime(datetime.datetime.now() - pd.to_timedelta("30day")))] 
+  df_30_dias = df_revisoes[df_revisoes.timestamp.dt.date > (pd.Timestamp(datetime.datetime.now() - pd.to_timedelta("30day")).date())]
+  df_30_60_dias = df_revisoes[(df_revisoes.timestamp.dt.date > (pd.Timestamp(datetime.datetime.now() - pd.to_timedelta("60day")).date())) & (df_revisoes.timestamp.dt.date < (pd.Timestamp(datetime.datetime.now() - pd.to_timedelta("30day")).date()))]
 
 #________________________________[análises]__________________________________#
 
