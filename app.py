@@ -67,7 +67,7 @@ def telegram_bot():
         
         # Define resposta
         if message == "/start":
-            texto_resposta = "Olá! Seja bem-vinda(o). Esse bot te dá algumas análises sobre a página da Wikipédia que você escolher. Na próxima mensagem, envie o título da página (verbete) que deseja acompanhar:"
+            texto_resposta = f'\nBoas vindas! Eu sou o bot da <b>Vigiando a Wikipédia</b>, uma ferramenta que permite acompanhar como, quando e por quem a história está sendo narrada, alterada ou eliminada.\n\n  Você escolhe um verbete da Wikipédia, e eu faço algumas análises sobre ele. Na próxima mensagem, envie o verbete que você deseja acompanhar.\n\n Lembre-se: ele precisa estar escrito tal qual aparece no site da Wikipédia, com cada inicial maiúscula e separado por espaços (exemplo: Oceano Atlântico)\n\nVamos lá!\n\n <i> Envie o verbete escolhido na próxima mensagem. A depender de quão volumoso ele é em tamanho e versões editadas, a consulta pode demorar alguns minutos.</i>"
         else:
             texto_resposta = resposta_wiki 
             
