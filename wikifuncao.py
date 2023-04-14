@@ -9,7 +9,7 @@ def wikifuncao(verbete):
 
   BASE_URL = "http://pt.wikipedia.org/w/api.php"
 
-  title = verbete.replace('_',' ')
+  title = verbete.capitalize()
 
   parameters = { 'action': 'query',
             'format': 'json',
@@ -19,11 +19,6 @@ def wikifuncao(verbete):
             'rvprop': 'content|size|ids|timestamp|sha1|comment|flags|user|userid',
             'rvlimit': 'max',  
             'rvdir': 'older'}
-
-#   wp_call = requests.get(BASE_URL, params=parameters)
-#   response = wp_call.json()
-
-#   title = parameters['titles'].replace('_',' ')
 
   total_revisions = 0
   revisoes = []
