@@ -120,15 +120,15 @@ def wikifuncao(verbete):
   resposta = f'\U0001F5D3	Nos últimos 30 dias, o verbete <b>{title}</b>:\n \n'
 
   if df_30_dias.shape[0] == 0:
-      resposta = resposta +  f'\U000274C \nNão sofreu alterações.'
+      resposta = resposta +  f'\U0000274C \nNão sofreu alterações.'
   else:
-      resposta = resposta + f'\U000274E	 \nFoi editado {vezes_editado} vezes.'
+      resposta = resposta + f'\U000274E	 \nFoi editado <b>{vezes_editado} vezes</b>.'
 
   if num > 1:
-      resposta = resposta +  f'\U0001F465	\nFoi editado por {num} usuários.'
+      resposta = resposta +  f'\U0001F465	\nFoi editado por <b>{num} usuários.'
 
   elif num == 1:
-      resposta = resposta + f'\U0001F464 \nFoi editado por {num} usuário.'
+      resposta = resposta + f'\U0001F464 \nFoi editado por <b>{num} usuário</b>.'
   else:
       resposta = resposta + f' '
 
@@ -138,7 +138,7 @@ def wikifuncao(verbete):
   else:
       usuario = df_usuarios.loc[0]['#edicoes']
       n_edicoes = df_usuarios.loc[0]['count']
-      resposta = resposta + f'\nQuem mais editou este verbete foi {usuario}, com {n_edicoes} edições.'
+      resposta = resposta + f'\nQuem mais editou este verbete foi <b>{usuario}, com <b>{n_edicoes} edições</b>.'
 
   if R > 0:
       resposta = resposta + f'\U0002795	\nO tamanho da edição aumentou <b>{R}%</b>, em comparação aos 30 dias anteriores.'
