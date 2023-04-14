@@ -12,6 +12,7 @@ from flask import Flask, request
 from io import StringIO 
 from oauth2client.service_account import ServiceAccountCredentials
 
+import bibliotecas_variaveis
 import gravar_sheets
 import WikiFuncao
 
@@ -62,17 +63,12 @@ def telegram_bot():
     else:
         texto_resposta = WikiFuncao(message)
     nova_mensagem = {"chat_id": chat_id, "text": texto_resposta}
-    requests.post(f"https://api.telegram.org./bot{token}/sendMessage", data=nova_mensagem)
+    requests.post(f"https://api.telegram.org./bot{TELEGRAM_API_KEY}/sendMessage", data=nova_mensagem)
     mensagens.append([datahora, "enviada", username, first_name, chat_id, texto_resposta])
         
 
 # Atualiza planilha do sheets com último update processado
    
     gravar_sheets(mensagens)
-    
-# Envia a resposta 
-
-    nova_mensagem = {"chat_id": chat_id, "text": texto_resposta} 
-    requests.post(f"https://api.telegram.org./bot{TELEGRAM_API_KEY}/sendMessage", data=nova_mensagem)
 
     return "ok"
