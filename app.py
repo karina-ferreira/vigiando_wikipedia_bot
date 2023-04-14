@@ -37,25 +37,23 @@ app = Flask(__name__)
 def index():
   return "Esse é o site do Vigiando Wikipédia Bot"
 #_______________________________[teste bot]__________________________________
-
-# Define resposta
-if message == "/start":
-    texto_resposta = "Olá! Seja bem-vinda(o). Esse bot te dá algumas análises sobre a página da Wikipédia que você escolher. Na próxima mensagem, envie o título da página (verbete) que deseja acompanhar:"
-else:
-    if message != last_message: # verifica se a mensagem atual é diferente da última mensagem enviada
-        texto_resposta = "entrou na segunda" #resposta_wiki
+ last_message = ""
+  
+ if message == "/start":
+        texto_resposta = "Olá! Seja bem-vinda(o). Esse bot te dá algumas análises sobre a página da Wikipédia que você escolher. Na próxima mensagem, envie o título da página (verbete) que deseja acompanhar:"
     else:
-        texto_resposta = "" # não envia resposta se a mensagem atual é igual à última mensagem enviada
-        
-# Envia a resposta        
-nova_mensagem = {"chat_id": chat_id, "text": texto_resposta} 
-requests.post(f"https://api.telegram.org./bot{TELEGRAM_API_KEY}/sendMessage", data=nova_mensagem)
+        if message == last_message: # verifica se a mensagem atual é igual à última mensagem
+            texto_resposta = "Você já me disse isso!" # define texto_resposta como uma string informando que a mensagem já foi enviada antes
+        else:
+            texto_resposta = "entrou na segunda" #resposta_wiki
+            last_message = message # atualiza last_message com a última mensagem enviada
 
-# Atualiza planilha do sheets com último update processado
-gravar_sheets.gravar_sheets(nova_mensagem)
+    nova_mensagem = {"chat_id": chat_id, "text": texto_resposta} 
+    requests.post(f"https://api.telegram.org./bot{TELEGRAM_API_KEY}/sendMessage", data=nova_mensagem)
 
-# armazena a última mensagem enviada
-last_message = message
+    gravar_sheets.gravar_sheets(nova_mensagem)
+
+    return "ok"
 
 # ______________________________[bot do telegram]_____________________________
 
