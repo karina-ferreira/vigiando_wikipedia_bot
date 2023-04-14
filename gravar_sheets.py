@@ -18,7 +18,7 @@ planilha_recebidas = planilha.worksheet("mensagens_recebidas")
 
 # ______________________________[função]_________________________
 
-def gravar_sheets():
+def gravar_sheets(mensagem):
   
     recebidas = []
     for mensagem in mensagens:
