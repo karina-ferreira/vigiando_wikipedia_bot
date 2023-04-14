@@ -56,7 +56,7 @@ def telegram_bot():
     time = datetime.fromtimestamp(update['message']['date']).time()
 
 # Define resposta
-
+    texto_resposta = ""
     if message == "/start":
         texto_resposta = "Olá! Seja bem-vinda(o). Esse bot te dá algumas análises sobre a página da Wikipédia que você escolher. Na próxima mensagem, envie o título da página (verbete) que deseja acompanhar:"
     else:
